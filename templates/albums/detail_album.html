@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Album Description</title>
-    <h2>{{ album_description.title }} by {{ album_description.artist }}</h2>
-    
 </head>
 <body>
-    
+    <h2>{{ album_description.title }} by {{ album_description.artist }}</h2>
+    <p>Genre: {{ album_description.genre }}</p>
 </body>
+<footer>
+    <a href="{% url 'home' %}">Back to Homepage</a>
+</footer>
 </html>
