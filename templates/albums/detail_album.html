@@ -12,6 +12,7 @@
 </body>
 <footer>
     <div><a href="{% url 'edit_album' album_description.pk %}">Edit This Entry</a></div>
+    <div><a href="{% url 'delete_album' album_description.pk %}">Delete</a></div>
     <div><a href="{% url 'home' %}">Back to Homepage</a></div>
 </footer>
 </html>

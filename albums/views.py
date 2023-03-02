@@ -34,3 +34,11 @@ def edit_album(request, pk):
             return redirect('home')
     form = AlbumForm(instance=album_to_edit)
     return render(request, 'albums/edit_album.html', {'form': form})
+
+
+def delete_album(request, pk):
+    album_to_delete = get_object_or_404(Album, pk=pk)
+    if request.method == 'POST':
+        album_to_delete.delete()
+        return redirect('home')
+    return render(request, 'albums/delete_album.html')
