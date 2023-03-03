@@ -16,6 +16,6 @@
     <li><a href="{% url 'detail_album' album.pk %}">{{ album }}</a></li>
     {% endfor %}
     </ul>
-    <a href="{% url 'add_album' %}">Add Album</a>
+    <button class='button is-primary'><a href="{% url 'add_album' %}">Add Album</a></button>
 </body>
 </html>
