@@ -1,18 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/django_music.css' %}">
     <title>Album Description</title>
 </head>
 <body>
-    <h2>{{ album_description.title }} by {{ album_description.artist }}</h2>
+    <h1>About the band and album</h1>
+    <h2>{{ album_description.artist }}</h2>
+    <h2>Album: {{ album_description.title }}<h2>
     <p>Genre: {{ album_description.genre }}</p>
+    {% if album_description.image %}
+    <img src="{{album_description.image.url}}" alt="album cover">
+    {% endif %}
 </body>
 <footer>
-    <div><a href="{% url 'edit_album' album_description.pk %}">Edit This Entry</a></div>
-    <div><a href="{% url 'delete_album' album_description.pk %}">Delete</a></div>
-    <div><a href="{% url 'home' %}">Back to Homepage</a></div>
+    <button class='button is-primary'><a href="{% url 'edit_album' album_description.pk %}">Edit This Entry</a></button>
+    <button class='button is-primary'><a href="{% url 'delete_album' album_description.pk %}">Delete</a></button>
+    <div><a href="{% url 'home' %}">-- Back to Homepage --</a></div>
 </footer>
 </html>

@@ -11,7 +11,7 @@ def list_albums(request):
 
 def add_album(request):
     if request.method == 'POST':
-        album_form = AlbumForm(request.POST)
+        album_form = AlbumForm(request.POST, request.FILES)
         if album_form.is_valid():
             # save and instance of album object
             album_form.save()
@@ -28,7 +28,8 @@ def detail_album(request, pk):
 def edit_album(request, pk):
     album_to_edit = get_object_or_404(Album, pk=pk)
     if request.method == 'POST':
-        album_form = AlbumForm(request.POST, instance=album_to_edit)
+        album_form = AlbumForm(
+            request.POST, request.FILES, instance=album_to_edit)
         if album_form.is_valid():
             album_form.save()
             return redirect('home')
@@ -41,4 +42,5 @@ def delete_album(request, pk):
     if request.method == 'POST':
         album_to_delete.delete()
         return redirect('home')
+    # ask about render line below
     return render(request, 'albums/delete_album.html')
